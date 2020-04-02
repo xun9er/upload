@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{if !empty($archive[mtitle])}{$archive[mtitle]}{elseif $category[$catid][meta_title] and !$archive[title]}{$category[$catid][meta_title]}{else}{if !empty($archive[title])}{$archive[title]}-{/if}{if $type[meta_title]}{$type[meta_title]}-{elseif typename($type[typeid])}{typename($type[typeid])}-{/if}{if $category[$catid][meta_title]}{$category[$catid][meta_title]}-{elseif !empty($catid)}{catname($catid)}-{/if}{get('fullname')}{/if} - Powered by CmsEasy</title>
+<meta name="keywords" content="{if $archive[keyword]}{$archive[keyword]}{else}{if $type[keyword]}{$type[keyword]}{elseif $category[$catid][keyword]}{$category[$catid][keyword]}{else}{get('site_keyword')}{/if}{/if}" />
+<meta name="description" content="{if $archive[description]}{$archive[description]}{else}{if $type[description]}{$type[description]}{elseif $category[$catid][description]}{$category[$catid][description]}{else}{get('site_description')}{/if}{/if}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link href="{$skin_path}/reset.css" rel="stylesheet" type="text/css" />
+<link href="{$skin_path}/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$base_url}/js/jquery.min.js"></script>
+<!--[if IE 6]> 
+<script language="javascript" type="text/javascript">
+navHover = function() { 
+var lis = document.getElementById("navmenu").getElementsByTagName("LI"); 
+for (var i=0; i<lis.length; i++) { 
+lis[i].onmouseover=function() { 
+this.className+=" iehover"; 
+} 
+lis[i].onmouseout=function() { 
+this.className=this.className.replace(new RegExp(" iehover\\b"), ""); 
+} 
+} 
+} 
+if (window.attachEvent) window.attachEvent("onload", navHover); 
+
+stuHover = function() {
+ var cssRule;
+ var newSelector;// 
+ for (var i = 0; i < document.styleSheets.length; i++)
+  for (var x = 0; x < document.styleSheets[i].rules.length ; x++)
+   {
+   cssRule = document.styleSheets[i].rules[x];
+   if (cssRule.selectorText.indexOf("LI:hover") != -1)
+   {
+     newSelector = cssRule.selectorText.replace(/LI:hover/gi, "LI.iehover");
+    document.styleSheets[i].addRule(newSelector , cssRule.style.cssText);
+   }
+  }
+ var getElm = document.getElementById("menu").getElementsByTagName("LI");
+ for (var i=0; i<getElm.length; i++) {
+  getElm[i].onmouseover=function() {
+  this.className+=" iehover";
+  }
+  getElm[i].onmouseout=function() {
+  this.className=this.className.replace(new RegExp(" iehover\\b"), "");
+  }
+ }
+}
+if (window.attachEvent) window.attachEvent("onload", stuHover);
+ 
+</script>
+<![endif]--> 
+<script language="javascript" type="text/javascript">
+function killerrors()
+{
+return true;
+}
+window.onerror = killerrors;
+</script>
+</head>
+
+<body>
+
+<div id="main">
+<div id="sig"></div>
+<div id="header">
+  	<div class="logo"><a href="{$base_url}/"><img src="{$base_url}/{get('site_logo')}" alt="{$sitename}" width="{get('logo_width')}"></a></div>
+    <div class="top">
+	<div class="top_a"><a title="{lang(sitewap)}" href="{$base_url}/wap/">{lang(sitewap)}</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="<?php echo url('archive/orders');?>">{lang(shoppingcart)}</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+<a href="{$site_url}" onclick="window.external.addFavorite(this.href,this.title);return false;" title='{get(sitename)}' rel="sidebar">{lang(favorite)}</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+<a title="{lang(feedback)}" href="{url('guestbook')}" target="_blank">{lang(feedback)}</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+<a id="StranLink" title="繁简转换">繁体</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+{login_js()}</div>
+	<div class="top_wd clear"><a href="index.php?case=archive&act=show&aid=4">SITEMAP</a>  |  <?php $t=position_p($catid=5);?>
+<a href="{$t.url}" title="{$t['name']}">CONTACT</a><?php?></div>
+	<form name='search' action="<?php echo url('archive/search');?>" onsubmit="search_check();" method="post">
+<div class="top_input">
+	<input type="text" name="keyword" value="{lang(pleaceinputtext)}" onfocus="if(this.value=='{lang(pleaceinputtext)}') {this.value=''}" onblur="if(this.value=='') this.value='{lang(pleaceinputtext)}'" size="24" />
+    </div> 
+	<div  class="top_inputimg"><input name='submit' type="image" src="{$skin_path}/sm_3.gif" align="middle" /></div>
+</form>
+<!-- 多站切换 -->
+<div class="website">
+	<select name="website" onchange="javascript:window.open(this.options[this.selectedIndex].value)">
+  <option value="default">{lang('websitego')}</option>
+  {loop getwebsite() $d}
+  <option value="{$d['url']}">{$d[name]}</option>
+  {/loop}
+</select>
+</div>
+   </div>
+	
+	<div class="clear"></div>
+<div id="nav">
+<ul id="navmenu"> 
+<li><a title="{lang(backhome)}" href="{$base_url}/" class="one{if $topid==0} on{/if}">{lang(homepage)}</a></li>
+{loop categories_nav() $t}
+<li><img src="{$skin_path}/nav_line.gif" /></li>
+<li><a href="{$t[url]}" title="{$t[catname]}" class="one{if isset($topid) && $topid==$t[catid]} on{/if}">{$t[catname]}</a>
+<ul>
+{loop categories($t[catid]) $t1}
+<li><a title="{$t1[catname]}" href="{$t1[url]}">{$t1[catname]}</a>
+<ul>{loop categories($t1[catid]) $t2}
+<li><a title="{$t2[catname]}" href="{$t2[url]}">{$t2[catname]}</a>
+<ul>{loop categories($t2[catid]) $t3}
+<li><a title="{$t3[catname]}" href="{$t3[url]}">{$t3[catname]}</a>
+<ul>{loop categories($t3[catid]) $t4}
+<li><a title="{$t4[catname]}" href="{$t4[url]}">{$t3[catname]}</a>
+<ul>{loop categories($t4[catid]) $t5}
+<li><a title="{$t5[catname]}" href="{$t4[url]}">{$t3[catname]}</a></li> 
+{/loop}</ul>
+</li> 
+{/loop}</ul>
+</li>
+{/loop}</ul>
+</li>
+{/loop}</ul>
+</li> 
+{/loop}</ul>
+</li>{/loop}
+</ul>
+</div>
+
+<div class="blank5"></div>
+
+<div class="banner">
+<script type="text/javascript">
+switch({get('slide_number')}){/*幻灯片数量控制*/
+	case 1:
+	var files='{$base_url}/{get(slide_pic1)}';/*广告图片*/
+    var links='{get(slide_pic1_url)}';/*图片上的链接,注意链接中的&要用%26替换*/
+    var texts='{get(slide_pic1_title)}';/*图片标题*/
+	break
+	case 2:
+	var files='{$base_url}/{get(slide_pic1)}|{$base_url}/{get(slide_pic2)}';/*广告图片*/
+var links='{get(slide_pic1_url)}|{get(slide_pic2_url)}';/*图片上的链接,注意链接中的&要用%26替换*/
+var texts='{get(slide_pic1_title)}|{get(slide_pic2_title)}';/*图片标题*/
+	break
+	case 3:
+	var files='{$base_url}/{get(slide_pic1)}|{$base_url}/{get(slide_pic2)}|{$base_url}/{get(slide_pic3)}';/*广告图片*/
+var links='{get(slide_pic1_url)}|{get(slide_pic2_url)}|{get(slide_pic3_url)}';/*图片上的链接,注意链接中的&要用%26替换*/
+var texts='{get(slide_pic1_title)}|{get(slide_pic2_title)}|{get(slide_pic3_title)}';/*图片标题*/
+break
+    case 4:
+	var files='{$base_url}/{get(slide_pic1)}|{$base_url}/{get(slide_pic2)}|{$base_url}/{get(slide_pic3)}|{$base_url}/{get(slide_pic4)}';/*广告图片*/
+var links='{get(slide_pic1_url)}|{get(slide_pic2_url)}|{get(slide_pic3_url)}|{get(slide_pic4_url)}';/*图片上的链接,注意链接中的&要用%26替换*/
+var texts='{get(slide_pic1_title)}|{get(slide_pic2_title)}|{get(slide_pic3_title)}|{get(slide_pic4_title)}';/*图片标题*/
+break
+   default:
+   var files='{$base_url}/{get(slide_pic1)}|{$base_url}/{get(slide_pic2)}|{$base_url}/{get(slide_pic3)}|{$base_url}/{get(slide_pic4)}|{$base_url}/{get(slide_pic5)}';/*广告图片*/
+var links='{get(slide_pic1_url)}|{get(slide_pic2_url)}|{get(slide_pic3_url)}|{get(slide_pic4_url)}|{get(slide_pic5_url)}';/*图片上的链接,注意链接中的&要用%26替换*/
+var texts='{get(slide_pic1_title)}|{get(slide_pic2_title)}|{get(slide_pic3_title)}|{get(slide_pic4_title)}|{get(slide_pic5_title)}';/*图片标题*/
+}
+
+var swf_width={get('slide_width')};/*修改flash宽，图片广告需要适应此宽度*/
+var swf_height={get('slide_height')};/*修改flash高，图片广告需要适应此高度*/
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+document.write('<param name="movie" value="{$base_url}/images/slide/focus.swf"><param name="quality" value="high">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');
+document.write('<embed src="{$base_url}/images/slide/focus.swf" wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); document.write('</object>'); 
+</script>
+</div>
+
+<div class="announ"><div id="announ">
+	{loop announ(5) $an}
+	<p><a href="{$an[url]}" title="{$an[title]}">{$an[title]}</a> [{$an[adddate]}]</p>
+	{/loop}
+</div></div>
+</div>

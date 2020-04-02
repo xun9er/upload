@@ -1,0 +1,168 @@
+{template 'header.html'}
+<div id="bd">
+
+<div class="scoll_img">
+<div class="box1">
+            	<div class="title"><div class="lanwd">{tag_首页产品中心栏目}</div>
+            	<div class="english">/ Products</div>
+            	</div>
+        <table width="760" height="154" border="0" cellPadding="0" cellSpacing="0">
+          <tr>
+            <td width="16" ><div class="GalleryPictureScrollerMoveLeft" title="Turn to left" onmouseover=r_left() onMouseDown="r_f_left()" onMouseUp="r_left()"></div></td>
+            <td width="362"><div class="GalleryPictureScroller" id=demo>
+
+                 <div id=demo1 style="FLOAT:left">
+                  <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                      <tr>
+					{tag_首页滚动图片}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <DIV id=demo2 style="FLOAT: left"></DIV>
+              </div></td>
+            <td width="22"><div class="GalleryPictureScrollerMoveRight" title="Turn to right"  onmouseover=r_right() onMouseDown="r_f_right()" onMouseUp="r_right()"></div></td>
+          </tr>
+               
+          <script src="{$base_url}/js/contentscroller.js" type="text/javascript"></script>
+        </table>
+      </div>
+</div>
+
+ <div class="right_right">
+        	<div class="box1" style="height:208px;">
+            	<div class="title">
+            	  <div class="lanwd">{tag_首页联系我们栏目}</div>
+            	  <div class="english">/ CONTACT	US</div>
+            	</div>
+                <div class="content">
+                	 <ul class="ul2g">
+                      <li>{lang(address)}：{get(address)}</li>
+<li>{lang(tel)}：{get(tel)}</li>
+<li>{lang(fax)}：{get(fax)}</li> 
+
+                        </ul>
+<form name="listform" id="listform"  action="<?php echo url('archive/email');?>" method="post">
+<input type="text" name="email" size="25" value="" style="display:none;"> <input type="submit" value=" " name="submit" class="mailbtn" />
+</form>
+<div class="blank10"></div>
+                </div>
+
+
+            
+        
+<div class="blank10"></div>
+</div>
+
+
+	  <div class="clear"></div>
+</div>
+	  <div class="blank10"></div>
+
+    	<div id="bd_left">
+        	<div class="box1">
+            	<div class="title"><div class="lanwd">{tag_首页企业新闻栏目}</div>
+            	<div class="english">/ NEWS</div>
+            	</div>
+                <div class="content">
+				{tag_首页新闻图文1条}
+					<div class="news">
+                        <ul class="ul2">
+{tag_首页新闻4条}
+                        </ul>
+                  </div><div class="clear"></div>
+                    <div class="learn_more"><?php $t=position_p($catid=2);?>
+<a href="{$t.url}" title="{$t['name']}"><img src="{$skin_path}/sm_14.gif" style="padding-right:15px;" border="0" /></a></div>
+					<div class="blank10"></div>
+              </div>
+            </div>
+        </div>
+      <div id="bd_right">
+      	<div class="right_left">
+
+		<div class="box1">
+            	<div class="title">
+            	  <div class="lanwd">{lang(producttype)}</div>
+            	  <div class="english">/ Type</div>
+            	</div>
+
+<div id="i_type">
+{tag_首页全部分类}
+<div class="clear"></div>
+</div>
+</div>
+
+<div class="blank10"></div>
+
+<div class="box1">
+            	<div class="title">
+            	  <div class="lanwd">{lang(contentspecial)}</div>
+            	  <div class="english">/ Special</div>
+            	</div>
+
+				
+{tag_首页最新专题}
+
+<div class="blank10"></div>
+</div>
+<div class="clear"></div>
+        </div>
+
+        <div class="right_right">
+
+		<div class="box1">
+            	<div class="title">
+            	  <div class="lanwd">{lang(vieworders)}</div>
+            	  <div class="english">/ Order</div>
+            	</div>
+                <div class="content">
+				<div class="blank10"></div>
+				<input size="20"  id="oid"  class="oid" name="oid" type="text" align="absmiple" value=" {lang(orderid)}… " onfocus="if(this.value==' {lang(orderid)}… ') {this.value=''}" onblur="if(this.value=='') this.value=' {lang(orderid)}… '"  />
+<input type="submit" id="search_btn" align="absmiple" name='submit' value=" {lang(look)} " onclick="javascript:window.location.href='<?php echo url('archive/orders');?>&oid='+document.getElementById('oid').value;" class="oidbtn" />
+
+<div class="blank10"></div>
+</div>
+</div>
+<div class="blank10"></div>
+        	<div class="box1" style="height:212px;">
+            	<div class="title">
+            	  <div class="lanwd">{lang(vote)}</div>
+            	  <div class="english">/ Vote</div>
+            	</div>
+                <div class="content" id="vote">
+                	<ul class="ul2g">
+{ballot(1)}
+
+                        </ul>
+<div class="blank10"></div>
+                </div>
+
+
+            
+        
+<div class="blank10"></div>
+</div>
+
+</div>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    <!--bd部结束-->
+	<div class="blank10"></div>
+	<div  id="links">
+<strong>热门关键词：</strong>{gethotsearch(10)}
+<div class="blank10"></div>
+<strong>{lang(links)}：</strong>
+{loop friendlink('text',1,20) $flink}
+{$flink[link]}&nbsp;&nbsp;
+{/loop}
+<div class="blank10"></div>
+{loop friendlink('image',0,20) $flink}
+{$flink[link]}&nbsp;&nbsp;
+{/loop}
+<div class="clear"></div>
+</div>
+<div class="blank10"></div>
+{template 'footer.html'}

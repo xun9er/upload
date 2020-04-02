@@ -1,0 +1,34 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+
+        <div class="rightg_content">
+		{template 'position.html'}
+        	
+            <div class="content2">
+            <div class="pd_title"></div>
+                       <div id="content" class="pd">
+{loop categories($catid) $i $t}
+		<div class="category_title">
+			<span><a title="{$t[catname]}" href="{category::url($t[catid])}">more</a></span><a title="{$t[catname]}" href="{category::url($t[catid])}">{$t[catname]}</a>
+		</div>
+		<div style="padding:10px 0px 0px;">
+			<ul class="news_list">
+			{loop archive($t[catid],0,0,'0,0,0',20,'aid',10,false,0) $i $archive} 
+			<li><span class="date">{$archive[adddate]}</span><a title="{$archive[title]}" href="{$archive[url]}">{$archive[title]}</a></li>
+			{/loop}
+		</ul>
+		<div class="blank10"></div>
+		</div>
+		{/loop}
+<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+	<div class="clear"></div></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+   	  </div>
+      <div class="clear"></div>
+    </div>
+{template 'footer.html'}

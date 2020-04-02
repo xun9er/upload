@@ -1,0 +1,17 @@
+{template 'wap/header.html'}
+<div id="nav">
+  <ul id="navmenu">
+    <li><a title="{lang(backhome)}" href="{$base_url}/?case=wap">{lang(homepage)}</a></li>
+    {loop categories_nav() $t}
+    <li><a href="?case=archive&act=list&t=wap&catid={$t[catid]}" title="{$t[catname]}">{$t[catname]}</a>
+      <ul>
+        {loop categories($t[catid]) $t1}
+        <li><a title="{$t1[catname]}" href="?case=archive&act=list&t=wap&catid={$t1[catid]}">{$t1[catname]}</a></li>
+        {/loop}
+      </ul>
+    </li>
+    {/loop}
+  </ul>
+</div>
+<br />
+{template 'wap/footer.html'}

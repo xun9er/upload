@@ -1,0 +1,41 @@
+{template 'header.html'}
+<div id="bd">
+
+	  <div class="banner1" style="width:978px;"><div class="rightg_title">
+            	
+            	<div class="english"><a title="{get('sitename')}" href="{$base_url}">{get('sitename')}</a></div><div class="lanwd">/ <a title="{lang('sitemap')}" href="#">{lang('sitemap')}</a></div>
+            </div></div>
+<div class="blank10"></div>
+        <div class="rightg_content">
+		
+            <div class="content2">
+<div class="sitemap">
+			<style type="text/css">
+				.sitemap {padding:10px 50px;}
+				.sitemap h2 {line-height:22px;font-size:14px;margin:5px 0px;padding-left:20px;background:url({$skin_path}/down.gif) left top no-repeat;color:#333;}
+				.sitemap h2 a {color:#333;}
+				.sitemap h3,.sitemap h4,.sitemap h5, {font-size:12px;padding-left:40px;font-weight:normal;color:#555;}
+				.sitemap h3 a,.sitemap h4 a,.sitemap h5 a {color:#555;font-size:12px;font-weight:normal;}
+			</style>
+			<h2><a title="{lang(homepage)}" target="_blank" href="{$base_url}/">{lang(homepage)}</a></h2>
+			{loop categories() $t}
+			<h2><a title="{$t[catname]}" target="_blank" href="{$t[url]}">{$t[catname]}</a></h2>
+				{loop categories($t[catid]) $t1}
+				<h3><a title="{$t1[catname]}" target="_blank" href="{$t1[url]}">{$t1[catname]}</a></h3>
+					{loop categories($t1[catid]) $t2}
+					<h4><a title="{$t2[catname]}" target="_blank" href="{$t2[url]}">{$t2[catname]}</a></h4>
+						{loop categories($t2[catid]) $t3}
+						<h5><a title="{$t3[catname]}" target="_blank" href="{$t3[url]}">{$t3[catname]}</a></h5>
+						{/loop}
+					{/loop}
+				{/loop}
+			{/loop}
+		</div>
+		<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+		<div class="blank30"></div>
+
+<div class="clear"></div>
+        </div>
+</div>
+{template 'footer.html'}

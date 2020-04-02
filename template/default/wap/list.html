@@ -1,0 +1,15 @@
+{template 'wap/header.html'}
+{loop $archives $i $arc}
+<a title="{$arc[title]}" href="?case=archive&act=show&t=wap&aid={$arc[aid]}">{$arc[title]}</a>	[{$arc[adddate]}]<br />
+{/loop}
+{$category[$catid][catname]}
+<br />
+{$category[$catid][categorycontent]}
+<br />
+{if isset($pages)}
+{category_pagination($catid)}
+{/if}
+<br />
+<br />
+<a href="javascript:history.back(-1)">返回上一页</a>	|	<a href="{$base_url}/wap/">返回首页</a>
+{template 'wap/footer.html'}

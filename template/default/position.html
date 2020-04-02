@@ -1,0 +1,38 @@
+<div class="rightg_title">
+  <div class="english"><a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a></div>
+            	<?php
+                if(front::get('case') == 'area'){
+                ?>
+                <div class="lanwd">/ {area::getpositonhtml(get('province_id'),get('city_id'),get('section_id'),get('id'))}</div>
+				<?php
+                }elseif(front::get('case') == 'announ'){
+                ?>
+				<div class="lanwd">/ <a title="{lang(siteannoun)}" href="#">{lang(siteannoun)}</a></div>
+				<?php
+                }elseif(front::get('case') == 'guestbook'){
+                ?>
+				<div class="lanwd">/ <a title="{lang('guestbook')}" href="#">{lang('guestbook')}</a></div>
+				<?php
+                }elseif(front::get('case') == 'comment'){
+                ?>
+				<div class="lanwd">/ <a title="{$t['name']}" href="{$t.url}">{lang('commentlist')}</a></div>
+                <?php
+                }elseif(front::get('case') == 'type'){
+                ?>
+                <div class="lanwd">/ {type::getpositionhtml($type['typeid'])}</div>
+                <?php
+                }elseif(front::get('case') == 'special'){
+                ?>
+                <div class="lanwd">/ <a title="{$special[title]}" href="#">{$special[title]}</a></div>
+                <?php
+                }elseif(front::get('case') == 'tag'){
+                ?>
+                <div class="lanwd">/ <a title="{$tag}" href="#">{$tag}</a></div>
+                <?php
+                }else{
+                ?>
+            	{loop position($catid) $t}<div class="lanwd">/ <a title="{$t['name']}" href="{$t.url}">{$t['name']}</a></div>{/loop}
+                <?php
+                }
+                ?>
+            </div>

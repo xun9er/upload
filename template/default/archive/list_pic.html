@@ -1,0 +1,40 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+	  <div class="banner1">{template 'position.html'}</div>
+<div class="blank10"></div>
+
+        <div class="rightg_content">
+		<div class="blank10"></div>
+<div style="width:380px;margin:0px auto;padding:0px auto;">
+{lang(orderquery)}：<input size="40"  id="oid" name="oid" type="text" align="absmiple" />
+<input type="submit" id="search_btn" align="absmiple" name='submit' value=" {lang(look)} " onclick="javascript:window.location.href='<?php echo url('archive/orders');?>&oid='+document.getElementById('oid').value;" />
+</div>
+<div class="blank10"></div>
+<div class="blank10"></div>
+
+<ul id="list-view">
+<!-- 内容缩略图列表 -->
+		{loop $archives $i $arc}
+			<li><div class="img-wrap"><a title="{$arc[title]}" target="_blank" href="{$arc[url]}"><img alt="{$arc[title]}" src="{$base_url}/{$arc[thumb]}" onerror='this.src="{$base_url}/{config::get('onerror_pic')}"' /></a></div>
+			<h5><a title="{$arc[title]}" target="_blank" href="{$arc[url]}">{$arc[title]}</a></h5></li>
+		{/loop}
+		</ul>
+		<div class="clear"></div>
+		<div class="blank10"></div>
+		<!-- 内容列表分页 -->
+		{if isset($pages)}
+		{category_pagination($catid)}
+		{/if}
+	
+		<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+		<div class="blank30"></div>
+            </div>
+<div class="clear"></div>
+        </div>
+
+
+    </div>
+{template 'footer.html'}

@@ -1,0 +1,30 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+
+        <div class="rightg_content">
+{template 'position.html'}
+        	
+            <div class="content2">
+                       <div id="content" style="width:680px;" class="pd">
+<ul class="news_list">
+			{loop $archives $i $arc}
+			<li><span class="date">{$arc[adddate]}</span><a title="{$arc[title]}" target="_blank" href="{$arc[url]}">{$arc[title]}</a></li>
+			{/loop}
+		</ul>
+		<div class="blank10"></div>
+		{if isset($pages)}
+		{type_pagination($catid)}
+		{/if}
+<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+	<div class="clear"></div></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+   	  </div>
+      <div class="clear"></div>
+    </div>
+	
+{template 'footer.html'}

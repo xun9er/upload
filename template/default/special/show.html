@@ -1,0 +1,39 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+
+        <div class="rightg_content">
+	{template 'position.html'}
+        	
+            <div class="content2">
+                       <div id="content" style="width:680px;" class="pd">
+<div class="blank10"></div>
+<!-- 专题图片 -->
+<img src="{$special[banner]}" style="float:left;margin:0px 20px 20px 0px;" />
+<!-- 专题介绍 -->
+{$special[description]}
+
+<div class="blank30"></div>
+
+<ul class="news_list">
+{loop $archives $i $sp}
+<li><span class="date">{$sp[adddate]}</span><a title="{$sp[title]}" target="_blank" href="{$sp[url]}">{$sp[title]}</a></li>
+{/loop}
+</ul>
+<div class="blank10"></div>
+<!-- 内容列表分页 -->
+{if isset($pages)}
+{special::pagination($tag)}
+{/if}
+<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+	<div class="clear"></div></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+   	  </div>
+      <div class="clear"></div>
+    </div>
+
+{template 'footer.html'}

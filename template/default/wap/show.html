@@ -1,0 +1,48 @@
+{template 'wap/header.html'}
+{$archive[title]}<br />
+{lang(author)}：{$archive[author]}<br />
+{lang(adddate)}：{$archive[adddate]}
+<br />
+{$archive[content]}
+<br />
+{if $archive[attr2]}
+<!-- tag -->
+{lang(productprice)}： {$archive[attr2]}<br />
+{/if}
+
+{if $archive[tag]}
+<!-- tag -->
+{lang(tag)}： {$archive[tag]}<br />
+{/if}
+
+{if $archive[special]}
+<!-- 专题 -->
+{lang(special)}： {$archive[special]}<br />
+{/if}
+
+
+{if $archive[type]}
+<!-- 分类 -->
+{lang(type)}： {$archive[type]}<br />
+{/if}
+
+
+{if $archive[area]}
+<!-- 地区 -->
+{lang(area)}： {$archive[area]}<br />
+{/if}
+
+<br />
+{if $pages>1}
+<!-- 内页分页 -->
+<br />
+{archive_pagination($archive)}
+<br />
+{/if}
+
+
+
+<br />
+<br />
+<a href="javascript:history.back(-1)">返回上一页</a>	|	<a href="{$base_url}/wap/">返回首页</a>
+{template 'wap/footer.html'}

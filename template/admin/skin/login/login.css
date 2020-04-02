@@ -1,0 +1,107 @@
+/*
+ * 易通CMS Style
+ * ============================================================================
+ * 版权所有 2008-2009 易通CMS，并保留所有权利。
+ * -------------------------------------------------------
+ * 这不是一个自由软件！
+ * 也不是一个开源软件！
+ * 本软件已经申请软件版权保护！
+ * 您不能在任何目的的前提下对程序代码进行破解、修改和使用；
+ * 不允许对程序代码以任何形式任何目的的再发布。
+ * ============================================================================
+ * @author:   九州易通科技有限公司
+ * @version:  v1.0
+ * ---------------------------------------------
+ * $Id: Style Sat Dec 06 09:50:51 CST 2008
+  
+  ---------------------------------------------------------------
+  1. base (全局基本属性)
+  ---------------------------------------------------------------
+  2.link (链接)
+  ---------------------------------------------------------------
+  3.font (字体)
+  ---------------------------------------------------------------
+  4. layout (框架)
+  ---------------------------------------------------------------
+  5. header (头部)
+  ---------------------------------------------------------------
+  6.content (页中)
+  ---------------------------------------------------------------
+  7.footer (页底)
+  ---------------------------------------------------------------
+  8. search (当前位置/文章搜索)
+  ---------------------------------------------------------------
+  9.assist (辅助)
+  ---------------------------------------------------------------
+  10.tab (切换)
+  ---------------------------------------------------------------
+  11.ad (广告)
+  ---------------------------------------------------------------
+  
+*/
+
+
+/* 
+  --------------------------------------
+  *****  1. base(全局基本属性)   *****
+  --------------------------------------
+*/
+
+body{margin:0px; padding:0px; 
+background:#284154;
+SCROLLBAR-FACE-COLOR: #E9F1F7; 
+ SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; 
+ SCROLLBAR-SHADOW-COLOR: #ffffff; 
+ SCROLLBAR-3DLIGHT-COLOR: #BCD4E5; 
+ SCROLLBAR-ARROW-COLOR: #2C5784; 
+ SCROLLBAR-TRACK-COLOR: #E9F1F7; 
+ SCROLLBAR-DARKSHADOW-COLOR: #BCD4E5; 
+ SCROLLBAR-BASE-COLOR: #000000;}
+div,td{font-family:Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif; font-size:12px; color:#333333;}
+a{color:#333333; text-decoration:none;}
+a:hover{color:#FF6600; text-decoration:none;}
+.clear{clear:both;}
+img{border:none}
+.wrapper{background:url(left-bg.gif) repeat-y;}
+ul{list-style:none;}
+form{margin:0px;}
+input{
+	color:#333333; 
+	font-size:12px;
+	height:17px;  
+	line-height:17px;
+	border:1px solid #B4B4B4;
+	padding:0px 2px 0px 2px;
+	}
+textarea{
+	color:#333333; 
+	font-size:12px; 
+	border:1px solid #B4B4B4; 
+	padding:0px 2px 0px 2px;}
+
+h4{ font-size:14px; text-align:center; margin:5px;}
+
+/*输入框样*/	
+#input{ 
+	width:150px;
+}
+.input_noboder{
+	border:none;}
+.input_noboder input{
+	border:none;}
+#input_460{ 
+	width:408px;
+}
+	
+.button {height:26px;padding:0px 10px;}
+
+/*按钮
+.button{
+	background:url(buttom_bg1.gif) no-repeat;
+	height:20px;
+	width:72px;
+	cursor:pointer;
+	text-align:center;
+	padding-top:2px;
+	border:none;
+	color:#395366;}*/

@@ -1,0 +1,9 @@
+{loop $comments $comment}
+<table width="90%"  border="0" cellspacing="3" cellpadding="3"  height="30">
+  <tr>
+    <td scope="col" width="20%"><b style="color: #70AADA;font-family: Arial, Helvetica, sans-serif;">{$comment[username]}</b><br>{sdate($comment[adddate],'Y-m-d H:i')}</td>
+    <td scope="col">{strip_tags($comment[content])}</td>
+  </tr>
+</table>
+<?php if(!isset($i)) $i=0;  $i++; if($i<count($comments)) {echo "<br>";} else unset($i); ?>
+{/loop}

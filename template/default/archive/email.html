@@ -1,0 +1,16 @@
+{template 'header.html'}<!-- 调用页头模板 -->
+<div id="c" style="background:none;">
+<div id="position">
+<span><a title="{get('sitename')}" href="{$base_url}">{get('sitename')}</a><a title="{lang(searchresult)}" href="#">{lang(mailsubscription)}</a></span><strong>{lang(nowposition)}</strong>
+</div>
+
+<div id="text" style="width:960px; margin:20px; text-align:center">
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+{lang(enteremailsubscription)}：<input type="text" name="email" size="30" value=""> <input type="submit" value=" {lang(submit)} " name="submit" class="button" />
+</form>
+
+</div>
+</div>
+<div class="clear"></div>
+<!-- 调用页底模板 -->
+{template 'footer.html'}

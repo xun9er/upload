@@ -1,0 +1,39 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+
+        <div class="rightg_content">
+{template 'position.html'}
+        	
+            <div class="content2">
+            <div class="pd_title">{$announ[title]}</div>
+                       <div id="content" style="width:690px;" class="pd">
+{$announ[content]}
+<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+	<div class="clear"></div></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+   	  </div>
+
+	<script> 
+function resizeImg(obj)
+{ 
+var obj = document.getElementById(obj); 
+var objContent = obj.innerHTML;
+var imgs = obj.getElementsByTagName('img'); 
+if(imgs==null) return; 
+for(var i=0; i<imgs.length; i++) 
+{ 
+if(imgs[i].width>parseInt(obj.style.width)) 
+{ 
+imgs[i].width = parseInt(obj.style.width);
+} 
+} 
+} 
+window.onload = function() {resizeImg('content');
+} 
+</script>
+{template 'footer.html'}

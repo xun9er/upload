@@ -1,0 +1,38 @@
+{template 'header.html'}
+<div id="bd">
+
+	  <div class="banner1" style="width:978px;"><div class="rightg_title">
+            	
+            	<div class="english"><a title="{get('sitename')}" href="{$base_url}">{get('sitename')}</a></div><div class="lanwd">/ <a title="{lang(searchresult)}" href="#"><span style="color:red;font-weight:bold;"> “{$keyword}” </span>{lang(searchresults)}：</a></div>
+            </div></div>
+<div class="blank10"></div>
+
+	<div class="blank10"></div>
+
+<form name='search' action="<?php echo url('archive/search');?>" onsubmit="search_check();" method="post">
+<div class="top_input"><?php echo form::select('catid',front::post('catid'),category::option(0,all,$op=array(0=>'{lang(all_columns)}')));?>
+	<input type="text" name="keyword" value="{lang(pleaceinputtext)}" onfocus="if(this.value=='{lang(pleaceinputtext)}') {this.value=''}" onblur="if(this.value=='') this.value='{lang(pleaceinputtext)}'" size="24" />
+    </div> 
+	<div  class="top_inputimg"><input name='submit' type="image" src="{$skin_path}/sm_3.gif" align="middle" /></div>
+</form>
+
+<div class="blank30"></div>
+
+	<ul class="news_list">
+		{loop $articles $article}
+		{cb_data($article)}
+		<li>[<a href="{$article[caturl]}">{$article[catname]}</a>] <a href="{$article[url]}"><?php if($keyword) echo str_replace($keyword,"<span style=color:red;font-weight:bold;>$keyword</span>",$article['title']); else { ?>{$article[title]}<?php } ?></a> ({$article['adddate']})
+		{/loop}
+	</ul>
+	<div class="blank10"></div>
+	<div class="pages">
+		<?php echo pagination::html($record_count,5); ?>
+	</div>
+		<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+		<div class="blank30"></div>
+
+<div class="clear"></div>
+
+</div>
+{template 'footer.html'}

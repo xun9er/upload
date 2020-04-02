@@ -1,0 +1,108 @@
+<div id="bd_leftg">
+<div class="box1"> 
+<div class="title2"> 
+<div class="lanwd2">{lang(vieworders)}</div> 
+<div class="english2">/ Order</div> 
+</div> 
+<div class="content"> 
+<div class="blank10"></div> 
+<input size="20" id="oid" class="oid" name="oid" type="text" align="absmiple"value=" {lang(orderid)}… " onfocus="if(this.value==' {lang(orderid)}… ') {this.value=''}" onblur="if(this.value=='') this.value=' {lang(orderid)}… '" /> 
+<input type="submit" id="search_btn" align="absmiple" name='submit' value=" {lang(look)} " onclick="javascript:window.location.href='<?php echo url('archive/orders');?>&oid='+document.getElementById('oid').value;" class="oidbtn" />
+<div class="blank10"></div> 
+</div> 
+</div> 
+<div class="blank10"></div>
+
+
+<?php
+                if(front::get('case') == 'area'){
+                ?>
+               
+				<?php
+                }elseif(front::get('case') == 'announ'){
+                ?>
+				
+				<?php
+                }elseif(front::get('case') == 'guestbook'){
+                ?>
+				
+				<?php
+                }elseif(front::get('case') == 'comment'){
+                ?>
+				
+                <?php
+                }elseif(front::get('case') == 'type'){
+                ?>
+               
+                <?php
+                }elseif(front::get('case') == 'special'){
+                ?>
+               
+                <?php
+                }elseif(front::get('case') == 'tag'){
+                ?>
+                
+                <?php
+                }else{
+                ?>
+            	
+<div class="box1"> 
+<div class="title2"> 
+<div class="lanwd2">{lang(categorylist)}</div> 
+<div class="english2">/ Category</div> 
+</div> 
+<div class="content"> 
+<div class="blank10"></div> 
+
+<script type="text/javascript">
+<!--//---------------------------------+
+//  Developed by lain2k 
+//  Visit http://code.maimb.net for this script and more.
+//  This notice MUST stay intact for legal use
+// --------------------------------->
+$(document).ready(function()
+{
+	$(".parent").click(function()
+    {
+		$(this).addClass('open').removeClass('close').next("dd.child").show().siblings("dd.child").hide();
+		$(this).siblings().removeClass('open').addClass('close');
+	});
+
+	//预先打开 id为p1的菜单
+	$("#p1").addClass('open').removeClass('close').next("dd.child").show().siblings("dd.child").hide();
+
+
+
+});
+</script>
+
+<dl id="leftmenu" class="treemenu mb20">
+{loop categories() $t}
+<dt class="parent"{if isset($topid) && $topid==$t[catid]} id="p1"{/if}>{$t[catname]}</dt>
+<dd class="child">
+{loop categories($t[catid]) $t1}
+<a title="{$t1[catname]}" href="{$t1[url]}">{$t1[catname]}</a>
+{loop categories($t1[catid]) $t2}  
+<a title="{$t2[catname]}" target="_blank" href="{$t2[url]}" class="t2">└{$t2[catname]}</a>  
+{loop categories($t2[catid]) $t3}  
+<a title="{$t3[catname]}" target="_blank" href="{$t3[url]}" class="t2">	 └{$t3[catname]}</a>  
+{/loop}  
+{/loop}  
+{/loop}
+</dd>
+{/loop}
+<!--只展开当前栏目所在一级栏目下的分类-->
+</dl>
+
+<div class="blank10"></div> 
+</div> 
+</div> 
+<?php
+                }
+                ?>
+<div class="blank10"></div>
+
+{tag_左侧专题列表}
+{tag_左侧地区列表}
+{tag_左侧联系我们}
+</div>

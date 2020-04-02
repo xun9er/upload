@@ -1,0 +1,33 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+	  <div class="banner1">{template 'position.html'}</div>
+<div class="blank10"></div>
+
+        <div class="rightg_content">
+		
+            <div class="content2">
+         {loop $archives $i $arc}
+		<div class="news_text_pic">
+			<a href="{$arc[url]}" class="news_text_img"><img src="{$base_url}/{$arc[thumb]}" alt="{$arc[title]}" onerror='this.src="{$base_url}/{config::get('onerror_pic')}"' width="140" /></a>
+			<h5><span class=date>{$arc[adddate]}</span><a title="{$arc[title]}" href="{$arc[url]}">{$arc[title]}</a></h5>
+			<p>{cut(strip_tags($arc['introduce']),100)}…<a title="{$arc[title]}" href="{$arc[url]}">[{lang(more)}]</a></p>
+			<span class="strgrade">{lang(strgrade)}：{$arc[strgrade]}</span>
+			<div class="clear"></div>
+		</div>
+		{/loop}
+		<div class="blank10"></div>
+		{if isset($pages)}
+{category_pagination($catid)}
+{/if}
+		<div class="blank30"></div>
+		<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+		<div class="blank30"></div>
+            </div>
+<div class="clear"></div>
+        </div>
+
+
+    </div>
+{template 'footer.html'}

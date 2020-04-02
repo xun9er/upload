@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$lang.charset}" />
+<link href="{$conf.url}/templates/{$conf.template}/css/admin/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$conf.url}/js/jquery.js"></script>
+<script type="text/javascript" src="{$conf.url}/js/system.js"></script>
+<title>CElive</title>
+</head>
+
+<body>
+
+{literal}
+<style type="text/css">
+
+body {background:white;}
+#info {padding:20px;}
+</style>
+{/literal}
+
+<div id="info">
+
+<!--请勿删除和修改,确保能够正常运作和获取重要信息-->
+<div class="homecon">
+    <div id="homecon_left">
+        <div class="homecon_lefttit">系统信息</div>
+        <div class="homecon_leftcon">
+<ul>
+<li>PHP版本: {$phpv}</li>
+<li>ZEND版本: {$zendv}</li>
+<li>操作系统: {$sysos} / {$sysip}</li>
+<li>服务器信息: {$sysinf}</li>
+<li>开发团队: CmsEasy Team</li>
+<li>程序版本: CmsEasy Live <span id="__version">{$version}</span> <a href="http://info.cmseasy.cn/help/checkver.php?ver={$version}&type=celive" target="_blank"><span style="color:red; font-weight:bold">(检查更新)</span></a></li>
+<li>程序信息: <span id="__domain"><?php echo $_SERVER['HTTP_HOST'];?></span> <span id="__buy"></span></li>
+<li>版权所有: {$poweredby}</li>
+</ul>
+<div class="blank10"></div>
+</div>
+</div>
+
+<div id="homecon_right">
+
+            <div class="homecon_lefttit">官方信息</div>
+        <div class="homecon_leftcon">
+<ul id="officialinf">
+</ul>
+</div>
+</div>
+    </div>
+    <div class="clear"></div>
+  </div>
+<!--请勿删除和修改,确保能够正常运作和获取重要信息-->
+
+<div class="blank10"></div>
+
+</body>
+</html>

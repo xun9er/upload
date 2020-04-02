@@ -1,0 +1,85 @@
+{template 'header.html'}
+<div id="bd">
+    	{template 'left.html'}
+      <div id="bd_rightg">
+
+        <div class="rightg_content">
+		{template 'position.html'}
+        	
+            <div class="content2">
+
+                       <div id="content" style="width:700px;" class="pd">
+<div class="blank10"></div>
+<!-- 评论 -->
+<div id="comment">
+<form action="<?php echo url('comment/add'); ?>" method="POST" name="comment_form">
+<div class="comm">
+<strong>{lang('iwanttocomment')}:</strong> <?php if(hasflash()) { ?>
+<?php echo showflash(); ?>
+<?php } ?></div>
+<div class="blank5"></div>
+<textarea name="content" id="textarea"></textarea>
+<div style="margin-top:10px;line-height:34px;"><input type="hidden" name="aid" value="{$aid}"/>
+{lang('username')}：<input type="text" name="username" class="key" value="<?php echo get('username');?>"/> &nbsp;&nbsp;{lang('verifycode')}： &nbsp;<input type="text" name="verify" value="" size="4" /> <?php echo verify();?><input name="submit" class="input" value=" {lang('submit')} " type="submit"/>
+</div>
+</form>
+</div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="t_2 mb10"><div><h3>{lang('commentlist')}</h3><span>Comment list</span></div></div>
+<ul class="news_list">
+{pagination::html($record_count)}
+{loop $comments $comment}
+<li><a href="#">{$comment[username]}</a><span class="date">{sdate($comment[adddate],'Y-m-d H:i')}</span>
+<p>{strip_tags($comment[content])}</p></li>
+<?php if(!isset($i)) $i=0;  $i++; if($i<count($comments)) {echo "<br>";} else unset($i); ?>
+{/loop}
+</ul>
+<div class="blank30"></div>
+<div class="pages">
+ {pagination::html($record_count)}
+</div>
+
+
+		 <div class="blank30"></div>
+		 <a href="javascript:history.go(-1);" style="display:block;float:right;width:108px;height:27px;line-height:27px;margin:20px;color:#0D61BA;font-weight:bold;background:url({$skin_path}/search_btn.gif) no-repeat;text-align:center;">{lang('backuppage')}</a>
+		 <div class="clear"></div>
+</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+   	  </div>
+
+	<!--left_1 end-->
+<style>
+/****************评论*/
+#comment {
+  margin-top:20px;
+}
+
+#comment .input {
+  width:108px;
+  height:27px;
+  border:none;
+  background:url({$skin_path}/search_btn.gif) left top no-repeat;
+  font-weight:bold;
+  color:#0D61BA;
+  font-size:12px;
+}
+
+.comm {
+  height:28px;
+  line-height:28px;
+  padding-left:35px;
+  border-top:1px solid #ccc;
+  background:url({$skin_path}/comment.gif) 10px 7px no-repeat;
+}
+
+#textarea {
+  width:100%;
+  height:50px;
+  background:#FFF url({$skin_path}/cmslogo.gif) right bottom no-repeat;
+  border:1px solid #ccc;
+}
+</style>
+{template 'footer.html'}

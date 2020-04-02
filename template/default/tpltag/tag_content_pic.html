@@ -1,0 +1,4 @@
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1) $archive}
+<div class="new_tj"><div class="news_pic"><img src="{$archive[thumb]}"  class="imgys"/></div><div class="p1"><span class="lanwd12c"><a href="{$archive[url]}" title="{$archive[title]}">{$archive[title]}</a></span><br />
+{cut(strip_tags($archive['introduce']),30)}</div></div>
+{/loop}
